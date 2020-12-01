@@ -201,28 +201,25 @@ const rawInput = `1782
 
 const stringInput = rawInput.split(/\s+/);
 const integerInput = stringInput.map(i=>parseInt(i));
-const findTwo = numbers => {numbers.forEach ((num1) => {
-    numbers.forEach ((num2) => {
+const findTwo = numbers => {numbers.forEach (num1 => {
+    numbers.forEach (num2 => {
         if ((num1 + num2) === 2020) {
-console.log(num1,num2, num1*num2);
-throw console.log('found the number!');
-}
-});
+            console.log(num1,num2, num1*num2);
+            throw console.log('found the number!');
+        }
+    });
 });
 };
-
 const findThree= numbers => {numbers.forEach ((num1) => {
     numbers.forEach (num2 => {
         numbers.forEach(num3 => {
             if ((num1 + num2 + num3) === 2020) {
                 console.log(num1,num2,num3, num1*num2*num3);
                 throw console.log('found the number!');
-                }
-        })
-
-});
+            }
+        });
+    });
 });
 };
-
 findTwo(integerInput);
 findThree(integerInput);
