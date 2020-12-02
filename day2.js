@@ -1000,15 +1000,19 @@ const rawInp = `6-8 s: svsssszslpsp
 2-9 g: jpxcgggzgsgngrhght`;
 
 const arrayInput = rawInp.split(/\n/);
-let validPasswords = 0;
+let validPasswordsPartOne = 0;
+let validPasswordsPartTwo = 0;
 arrayInput.forEach(item => {
     let range = item.split(' ')[0];
-    let min = range.split('-')[0];
-    let max = range.split('-')[1];
+    let numOne = range.split('-')[0];
+    let numTwo = range.split('-')[1];
     let char = item.split(' ')[1].replace(':', '');
     let password = item.split(' ')[2];
     let charsCount = password.match(new RegExp(char, 'g'));
-    if ((charsCount && charsCount.length) && charsCount.length >= min && charsCount.length <= max) {
-        validPasswords ++;
+    if ((charsCount && charsCount.length) && charsCount.length >= numOne && charsCount.length <= numTwo) {
+        validPasswordsPartOne ++;
+    }
+    if((password.charAt(numOne-1) === char && password.charAt(numTwo-1) !== char) || (password.charAt(numOne-1) !== char && password.charAt(numTwo-1) === char)) {
+        validPasswordsPartTwo ++
     }
 });
